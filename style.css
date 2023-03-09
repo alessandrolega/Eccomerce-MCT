@@ -1,0 +1,67 @@
+/*
+Theme Name:     merceriacreativatania
+Theme URI:      https://www.merceriacreativatania.com
+Description:    Tema Child per merceria creativa tania
+Author:         Oleksandr Oleksyuk 
+Author URI:     #
+Template:       storefront
+Version:        #
+Last modified: 20/02/2023 - oleksandr
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .titleH2 {
+    @apply text-2xl font-black text-emerald-600 md:text-3xl lg:text-4xl;
+  }
+}
+/* nascondo le cose di WP */
+/* #page > header, */
+#masthead,
+header.entry-header,
+footer#colophon {
+  display: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+#page,
+#page div.col-full,
+div#primary,
+#page main#main,
+div#post-13,
+#page div.entry-content,
+ol,
+ul,
+li,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+li,
+form,
+label,
+nav,
+section,
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  max-width: 100%;
+  text-decoration: none !important;
+  color: inherit;
+}

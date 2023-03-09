@@ -1,0 +1,17 @@
+{
+  "name": "merceriacreativatania",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "watch:css": "tailwind -i ./style.css -o ./dist/output.css --watch",
+    "build:css": "tailwind build style.css -o dist/output.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.19.3",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
+    "tailwindcss": "3.2"
+  }
+}
