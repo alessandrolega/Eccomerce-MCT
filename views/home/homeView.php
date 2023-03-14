@@ -1,7 +1,7 @@
 <div class="text-emerald-900">
     <!-- navbar -->
     <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
-    <header class="py-10 mad:py-20 w-11/12 mx-auto">
+    <header class="py-10 md:py-20 w-11/12 mx-auto">
         <!-- title -->
         <div class="flex flex-col md:flex-row justify-center items-center pb-10 gap-10 lg:gap-20 ">
             <div class="max-w-2xl">

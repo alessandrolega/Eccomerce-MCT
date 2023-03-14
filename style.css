@@ -19,20 +19,29 @@ Last modified: 20/02/2023 - oleksandr
 }
 /* nascondo le cose di WP */
 /* #page > header, */
+#page div.storefront-breadcrumb,
+#page div#secondary,
 #masthead,
 header.entry-header,
 footer#colophon {
   display: none;
 }
 
-ol,
+div#page {
+  height: 100vh;
+}
+
+div#primary {
+  width: 100%;
+}
+
+/* ol,
 ul {
   list-style: none;
-}
+} */
 
 #page,
 #page div.col-full,
-div#primary,
 #page main#main,
 div#post-13,
 #page div.entry-content,

@@ -22,7 +22,6 @@ class GeneralController extends UtilsController
         try {
             $is_local = $_SERVER['HTTP_HOST'] === 'localhost:8888';
             $path = $_SERVER['DOCUMENT_ROOT'] . ($is_local ? '/mct/' : '') . '/wp-content/themes/merceriacreativatania/views/' . $atts['section'] . '/' . $atts['name'] . '.php';
-            //file_put_contents(LOGS_BASE_PATH.'log.txt','<pre>'.print_r($atts,true).'</pre>');
             $result = $this->GetTemplatePart($path, $atts);
             return $result;
         } catch (Exception $e) {
@@ -72,6 +71,9 @@ class GeneralController extends UtilsController
             switch ($section) {
                 case 'home':
                     $section = 'home';
+                    break;
+                case 'product':
+                    $section = 'product';
                     break;
             }
             return $section;
