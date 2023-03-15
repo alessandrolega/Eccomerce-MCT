@@ -34,7 +34,7 @@ function get_link_path($path)
     $production_link = 'index.php/';
     $base_url = is_local() ? $local_path : $production_path;
     $base_link = is_local() ? $local_link : $production_link;
-    return $base_url . '/wp-content/themes/merceriacreativatania/' . $base_link . $path;
+    return $base_url . $base_link . $path;
 }
 
 
