@@ -41,9 +41,6 @@ $viewName = $generalController->GetViewName();
 echo $generalController->SetViewModuleScript(get_stylesheet_directory_uri() . '/views/' . $viewName . '/js/init.js');
 ?>
 
-<?php
-echo do_shortcode('[views section=footer name=footerView]'); ?>
-
 </body>
 
 </html>

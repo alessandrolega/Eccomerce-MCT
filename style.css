@@ -17,8 +17,15 @@ Last modified: 20/02/2023 - oleksandr
     @apply text-2xl font-black text-emerald-600 md:text-3xl lg:text-4xl;
   }
 }
+
+#containerImageCard img {
+  height: 100%;
+  object-fit: contain;
+}
+
 /* nascondo le cose di WP */
 /* #page > header, */
+section.storefront-product-section,
 #page div.storefront-breadcrumb,
 #page div#secondary,
 #masthead,
@@ -41,6 +48,8 @@ ul {
 } */
 
 #page,
+#primary,
+#post-27,
 #page div.col-full,
 #page main#main,
 div#post-13,

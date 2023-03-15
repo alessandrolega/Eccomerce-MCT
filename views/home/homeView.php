@@ -1,3 +1,24 @@
+<?php
+$args = array(
+    'post_type' => 'product',
+    'posts_per_page' => -1,
+);
+
+$products = wc_get_products($args);
+
+$product_list = array();
+
+foreach ($products as $product) {
+    $product_list[] = array(
+        'id' => $product->get_id(),
+        'name' => $product->get_name(),
+        'image' => $product->get_image(),
+        'short_description' => $product->get_short_description(),
+        'price' => $product->get_price(),
+        // Aggiungi altre proprietà di prodotto desiderate
+    );
+}
+?>
 <div class="text-emerald-900">
     <!-- navbar -->
     <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
@@ -60,8 +81,10 @@
                     </div>
                     <div class="carousel flex justify-start items-center gap-5 relative max-w-7xl mx-auto"> <!-- overflow-x-auto -->
                         <?php
-                        for ($i = 1; $i <= 10; $i++) {
-                            echo do_shortcode('[views section=general name=cardView]');
+                        // ciclo foreach per stampare i prodotti
+                        foreach ($product_list as $product) {
+                            // include($path);
+                            echo $this->SetGeneralsShortCodesParams(['section' => 'general', 'name' => 'cardView', 'params' => $product]);
                         }
                         ?>
                     </div>
@@ -176,3 +199,4 @@
         </div>
     </main>
 </div>
+<?php echo do_shortcode('[views section=footer name=footerView]'); ?>

@@ -1,19 +1,21 @@
-<footer class="p-4 bg-emerald-900 md:px-6 md:py-8 ">
-    <div class="sm:flex sm:items-center sm:justify-between">
-        <a href="" class="flex items-center mb-4 sm:mb-0">
-            <img src="<?php echo get_image_path('logo/logo.png'); ?>" class="h-20 mr-3" alt="Merceria creatina tania Logo" />
-        </a>
-        <ul class="flex flex-wrap items-center mb-6 text-sm sm:mb-0">
-            <?php
-            $elements = ["Home", "Prodotti", "Fai da te creativo", "Chi sono",
-            ];
-            foreach ($elements as $el) {
-                echo "<a href='#' class='mr-4 hover:underline md:mr-6 text-xl text-white'><li>$el</li></a>";
-            }
-            ?>
-        </ul>
+<footer class="bg-emerald-900 flex items-center flex-col">
+    <div class="p-4 bg-emerald-900 md:px-6 md:py-8 w-11/12 mx-auto ">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <a href="" class="flex items-center mb-4 sm:mb-0">
+                <img src="<?php echo get_image_path('logo/logo.png'); ?>" class="h-20 mr-3" alt="Merceria creatina tania Logo" />
+            </a>
+            <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 ">
+                <?php
+                $elements = [
+                    "home" => "Home", "product" => "Prodotti", "home2" => "Fai da te creativo", "home3" => "Chi sono",
+                ];
+                foreach ($elements as $key => $value) {
+                    echo "<li class=''><a class='hover:text-pink-600 text-pink-300 text-xl' href=" . $key . ">$value</a></li>";
+                }
+                ?>
+            </ul>
+        </div>
+        <!-- <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" /> -->
     </div>
-    <!-- <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" /> -->
 </footer>
-<span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© <a href="" class="">Merceria Creativa Tania</a> P.Iva 0000000000
-</span>
+<span class="block text-sm text-gray-500 sm:text-center">© <a href="" class="">Merceria Creativa Tania</a> P.Iva 0000000000</span>

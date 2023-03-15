@@ -72,6 +72,9 @@ class GeneralController extends UtilsController
                 case 'home':
                     $section = 'home';
                     break;
+                case 'footer':
+                    $section = 'footer';
+                    break;
                 case 'product':
                     $section = 'product';
                     break;

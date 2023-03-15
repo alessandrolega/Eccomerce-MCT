@@ -3,15 +3,16 @@
 </div>
 <nav class="navbar flex justify-between items-center w-11/12 mx-auto top-0">
     <div>
-        <img class="h-20" src="<?php echo get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo">
+        <a href=""><img class="h-20" src="<?php echo get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
     </div>
     <div id="menu" class="hidden md:block absolute md:static bg-white left-0 top-[120px] w-full md:w-auto p-5">
         <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 ">
             <?php
-            $elements = ["Home", "Prodotti", "Fai da te creativo", "Chi sono",
+            $elements = [
+                "home" => "Home", "product" => "Prodotti", "home2" => "Fai da te creativo", "home3" => "Chi sono",
             ];
-            foreach ($elements as $el) {
-                echo "<li class=''><a class='hover:text-pink-600 text-xl' href=''>$el</a></li>";
+            foreach ($elements as $key => $value) {
+                echo "<li class=''><a class='hover:text-pink-600 text-xl' href=" . $key . ">$value</a></li>";
             }
             ?>
         </ul>

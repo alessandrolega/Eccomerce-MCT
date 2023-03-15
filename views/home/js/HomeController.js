@@ -37,15 +37,10 @@ export default class HomeController extends ExecJs {
 
       const gapCard = 20;
 
-      // const allWidth = carouselEl.length * cardWidth + gapCard * (carouselEl.length - 1);
-      // console.log(allWidth);
       arr.forEach((btn) =>
         btn.addEventListener("click", function () {
           console.log();
           if (direction === 0 && this.id === "prev") return false;
-          console.log(direction * cardWidth, allWidth);
-          // if (direction * cardWidth === -2240 && this.id === 'next') return false;
-
           direction = this.id === "next" ? (direction += -1) : (direction += 1);
           carouselEl.forEach(
             (card) =>
