@@ -3,7 +3,7 @@
 </div>
 <nav class="navbar flex justify-between items-center w-11/12 mx-auto top-0">
     <div>
-        <a href=""><img class="h-20" src="<?php echo get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
+        <a href="<?php echo get_link_path('home'); ?>"><img class="h-20" src="<?php echo get_image_path('logo/logo.png'); ?>" alt="Merceria creativa tania logo"></a>
     </div>
     <div id="menu" class="hidden md:block absolute md:static bg-white left-0 top-[120px] w-full md:w-auto p-5">
         <ul class="flex md:flex-row flex-col md:items-center items-start md:gap-[3vw] gap-6 ">
@@ -12,7 +12,8 @@
                 "home" => "Home", "product" => "Prodotti", "home2" => "Fai da te creativo", "home3" => "Chi sono",
             ];
             foreach ($elements as $key => $value) {
-                echo "<li class=''><a class='hover:text-pink-600 text-xl' href=" . $key . ">$value</a></li>";
+                $path = get_link_path($key);
+                echo "<li class=''><a class='hover:text-pink-600 text-xl' href=" . $path . ">$value</a></li>";
             }
             ?>
         </ul>

@@ -26,6 +26,17 @@ function get_merceria_path($path)
     return $base_url . '/wp-content/themes/merceriacreativatania/' . $path;
 }
 
+function get_link_path($path)
+{
+    $local_path = '/mct';
+    $production_path = '';
+    $local_link = '';
+    $production_link = 'index.php/';
+    $base_url = is_local() ? $local_path : $production_path;
+    $base_link = is_local() ? $local_link : $production_link;
+    return $base_url . '/wp-content/themes/merceriacreativatania/' . $base_link . $path;
+}
+
 
 function is_local()
 {
