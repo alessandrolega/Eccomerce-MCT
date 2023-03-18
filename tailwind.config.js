@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./**/*.php", "./**/*.js", "./**/*.html"],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        
+      }
+    },
   },
   plugins: [require('prettier-plugin-tailwindcss')],
 };

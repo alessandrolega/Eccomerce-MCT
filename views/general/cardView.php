@@ -1,6 +1,6 @@
 <?php
 $product = $params['params'];
-; ?>
+?>
 <div id="<?php echo $product['id']; ?>" class="transition-all duration-500 ease-linear col-span-1 mb-4">
     <div class="w-80 h-[27.1875rem] bg-cyan-100 p-5 text-left flex flex-col justify-between rounded-lg border-2 border-green-50">
         <div id="containerImageCard" class="flex h-48 items-center justify-center overflow-hidden">

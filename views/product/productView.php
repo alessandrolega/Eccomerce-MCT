@@ -15,76 +15,106 @@ foreach ($products as $product) {
         'image' => $product->get_image(),
         'short_description' => $product->get_short_description(),
         'price' => $product->get_price(),
+        'categories' => $product->get_categories(),
+        'parent' => $product->get_parent()
         // Aggiungi altre proprietà di prodotto desiderate
     );
 }
+
+$path = $_SERVER['DOCUMENT_ROOT'] . get_merceria_path('assets/logs/logs.txt');
+file_put_contents($path, '<pre>' . print_r($product_list, true)  . '</pre>');
+
+function list_product_categories()
+{
+    $catgegories = get_terms(
+        array(
+            'taxonomy'   => 'product_cat',
+            'orderby'    => 'name',
+            'hide_empty' => false,
+        )
+    );
+
+    $catgegories = treeify_terms($catgegories);
+
+    return $catgegories;
+}
+
+function treeify_terms($terms, $root_id = 0)
+{
+    $tree = array();
+
+    foreach ($terms as $term) {
+        if ($term->parent === $root_id) {
+            array_push(
+                $tree,
+                array(
+                    'name'     => $term->name,
+                    'slug'     => $term->slug,
+                    'id'       => $term->term_id,
+                    'count'    => $term->count,
+                    'children' => treeify_terms($terms, $term->term_id),
+                )
+            );
+        }
+    }
+
+    return $tree;
+}
+// echo '<pre>' . print_r(, true)  . '</pre>';
+
+$catgegoriesProduct = list_product_categories();
+
+file_put_contents($path, '<pre>' . print_r($catgegoriesProduct, true)  . '</pre>');
 ?>
 <section id="product">
     <?php echo do_shortcode('[views section=general name=navbarView]'); ?>
     <h1 class="text-center w-full text-7xl font-bold text-emerald-700">Prodotti</h1>
-    <div class="flex py-10 md:py-20 w-11/12 mx-auto flex-col gap-2">
+    <div class="flex py-10 md:py-20 w-11/12 mx-auto gap-2">
         <div class="w-64 p-4">
             <h2 class="text-4xl font-bold text-pink-500">Filtra per:</h2>
-            <div class="flex">
-                <div>
-                    <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Marca</h3>
-                    <ul class="w-48 text-sm font-medium text-emerald-900">
-                        <?php
-                        $data = ['adriafil' => 'Adriafil', 'vliseline' => 'Vliseline', 'mirta' => 'I nastri di Mirta', 'rinkalik' => 'Rinkalik'];
-                        foreach ($data as $key => $value) {
-                            echo '
+            <div>
+                <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Marca</h3>
+                <ul class="w-48 text-sm font-medium text-emerald-900">
+                    <?php
+                    // Stampa gli elementi del nuovo array
+                    foreach ($catgegoriesProduct as $key => $value) {
+                    ?>
                         <li class="w-full">
                             <div class="flex items-center">
-                                <input id="' . $key . '-checkbox" type="checkbox" value="" class="w-4 h-4  bg-pink-100 border-pink-500 rounded">
-                                <label for="' . $key . '-checkbox" class="w-full py-1 ml-2 text-sm font-medium text-emerald-900">' . $value . '</label>
+                                <input id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4  bg-pink-100 border-pink-500 rounded">
+                                <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 text-sm font-medium text-emerald-900"><?php echo $value['name']; ?></label>
                             </div>
                         </li>
-                        ';
-                        }
-                        ; ?>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Categoria</h3>
-                    <ul class="w-48 text-sm font-medium text-emerald-900">
-                        <?php
-                        $data = ['lana' => 'Lana', 'maglieria' => 'Maglieria', 'uncinetto' => 'Uncinetto', 'tessuti' => 'Tessuti', 'tessutiAmericani' => 'Tessuti Americani', 'fili' => 'Fili e filati'];
-                        foreach ($data as $key => $value) {
-                            echo '
-                        <li class="w-full">
-                            <div class="flex items-center">
-                                <input id="' . $key . '-checkbox" type="checkbox" value="" class="w-4 h-4  bg-pink-100 border-pink-500 rounded">
-                                <label for="' . $key . '-checkbox" class="w-full py-1 ml-2 text-sm font-medium text-emerald-900">' . $value . '</label>
-                            </div>
-                        </li>
-                        ';
-                        }
-                        ; ?>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Colori</h3>
-                    <ul class="w-48 text-sm font-medium text-emerald-900">
-                        <?php
-                        $data = ["orange" => "Arancione", "white" => "Bianco", "blue" => "Blu", "red" => "Rosso", "purple" => "Viola", "green" => "Verde"];
-                        // "black" => "Nero", "yellow" => "Giallo", "pink" => "Rosa", "brown" => "Marrone", "gray" => "Grigio"
-                        foreach ($data as $key => $value) {
-                            echo '
-                        <li class="w-full">
-                            <div class="flex items-center">
-                                <input id="' . $key . '-checkbox" type="checkbox" value="" class="w-4 h-4  bg-pink-100 border-pink-500 rounded">
-                                <label for="' . $key . '-checkbox" class="w-full py-1 ml-2 text-sm font-medium text-emerald-900">' . $value . '</label>
-                            </div>
-                        </li>
-                        ';
-                        }
-                        ; ?>
-                    </ul>
-                </div>
+                    <?php
+                    }
+                    ?>
+                </ul>
             </div>
-            <!-- <div class="flex gap-2 p-2 mx-auto border border-pink-600 rounded-lg items-center justify-center">Reset<img class="h-6 w-6 hover:animate-spin" src="<?php echo get_image_path('svg/reset.svg'); ?>" alt="" srcset=""></div> -->
+            <div>
+                <h3 class="mt-2 font-semibold text-emerald-900 text-2xl">Categoria</h3>
+                <ul class="w-48 text-sm font-medium text-emerald-900">
+                    <?php
+                    // Stampa gli elementi del nuovo array
+                    foreach ($catgegoriesProduct as $subcategories) {
+                        if ($subcategories['children']) {
+                            foreach ($subcategories['children'] as $key => $value) {
+                    ?>
+                                <li class="w-full">
+                                    <div class="flex items-center">
+                                        <input id="<?php echo $key . '-checkbox'; ?>" type="checkbox" value="" class="w-4 h-4  bg-pink-100 border-pink-500 rounded">
+                                        <label for="<?php echo $key . '-checkbox'; ?>" class="w-full py-1 ml-2 text-sm font-medium text-emerald-900"><?php echo $value['name']; ?></label>
+                                    </div>
+                                </li>
+                    <?php
+                            }
+                        }
+                    }
+                    ?>
+                </ul>
+            </div>
+            <div class="flex gap-2 p-2 mx-auto border border-pink-600 rounded-lg items-center justify-center">Reset<img class="h-6 w-6 hover:animate-spin" src="<?php echo get_image_path('svg/reset.svg'); ?>" alt="" srcset=""></div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 w-full xl:grid-cols-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 w-full lg:grid-cols-3">
             <?php
             // ciclo foreach per stampare i prodotti
             foreach ($product_list as $product) {

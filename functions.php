@@ -30,7 +30,7 @@ function get_link_path($path)
 {
     $local_path = '/mct';
     $production_path = '';
-    $local_link = '';
+    $local_link = '/wp-content/themes/merceriacreativatania/';
     $production_link = 'index.php/';
     $base_url = is_local() ? $local_path : $production_path;
     $base_link = is_local() ? $local_link : $production_link;
@@ -42,5 +42,3 @@ function is_local()
 {
     return strpos($_SERVER['HTTP_HOST'], 'localhost') !== false;
 }
-
-?>

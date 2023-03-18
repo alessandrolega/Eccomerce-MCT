@@ -42,12 +42,7 @@ export default class HomeController extends ExecJs {
           console.log();
           if (direction === 0 && this.id === "prev") return false;
           direction = this.id === "next" ? (direction += -1) : (direction += 1);
-          carouselEl.forEach(
-            (card) =>
-              (card.style.transform = `translateX(${
-                direction * (cardWidth + gapCard)
-              }px)`)
-          ); // magic number 20 da calcolare);
+          carouselEl.forEach((card) => (card.style.transform = `translateX(${direction * (cardWidth + gapCard)}px)`)); // magic number 20 da calcolare);
         })
       );
     });

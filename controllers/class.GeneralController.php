@@ -68,6 +68,7 @@ class GeneralController extends UtilsController
         try {
             global $wp, $post;
             $section = $post->post_name;
+
             switch ($section) {
                 case 'home':
                     $section = 'home';
@@ -77,6 +78,9 @@ class GeneralController extends UtilsController
                     break;
                 case 'product':
                     $section = 'product';
+                    break;
+                case 'singleproduct':
+                    $section = 'singleproduct';
                     break;
             }
             return $section;
@@ -102,6 +106,4 @@ class GeneralController extends UtilsController
             return 'Caught exception: ' . $e->getMessage();
         }
     }
-
 }
-?>

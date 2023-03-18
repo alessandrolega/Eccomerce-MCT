@@ -49,10 +49,10 @@ ul {
 
 #page,
 #primary,
-#post-27,
+#main > article,
+#main > div,
 #page div.col-full,
 #page main#main,
-div#post-13,
 #page div.entry-content,
 ol,
 ul,
@@ -82,4 +82,5 @@ a {
   max-width: 100%;
   text-decoration: none !important;
   color: inherit;
+  list-style: none;
 }
